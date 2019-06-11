@@ -18,6 +18,7 @@ import EditProfile from './components/profile-forms/EditProfile'
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profiles/Profile';
 import Vapes from './components/vapes/Vapes'
+import Vape from './components/vapes/Vape'
 
 
 if(localStorage.token) {
@@ -50,6 +51,7 @@ function App() {
             <PrivateRoute exact path='/create-profile' component={CreateProfile} />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
             <PrivateRoute exact path='/vapes' component={Vapes} />
+            <PrivateRoute exact path='/vape/:id' component={Vape} />
             <Route exact path='/profiles' component={Profiles} />
             <Route exact path='/profile/:id' component={Profile} />
           </Switch>

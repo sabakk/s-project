@@ -6,10 +6,20 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  brand: {
+    type: String
+  },
   text: {
     type: String,
     required: true
   },
+  volume: {
+    type: String
+  },
+  nicotine: {
+    type: String
+  },
+
   name: {
     type: String
   },

@@ -10,7 +10,7 @@ const VapeItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id, brand, text, volume, nicotine, name, avatar, user, likes, comments, date },
   showActions
 }) => (
   <div className='post bg-white p-1 my-5'>
@@ -20,8 +20,11 @@ const VapeItem = ({
         <h4>{name}</h4>
       </Link>
     </div>
-    <div>
-      <p className='my-1'>{text}</p>
+    <div className='my-3'>
+      <h1>{brand}</h1>
+      <p >{text}</p>
+      <p>{nicotine}</p>
+      <p>{volume}</p>
       <p className='post-date'>
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
@@ -43,7 +46,7 @@ const VapeItem = ({
           >
             <i className='fas fa-thumbs-down' />
           </button>
-          <Link to={`/posts/${_id}`} class='btn btn-primary'>
+          <Link to={`/vape/${_id}`} class='btn btn-primary'>
             Discussion{' '}
             {comments.length > 0 && (
               <span className='comment-count'>{comments.length}</span>
