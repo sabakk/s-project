@@ -64,7 +64,9 @@ router.post(
       facebook,
       twitter,
       instagram,
-      linkedin
+      linkedin,
+      from,
+      to
     } = req.body;
 
     // Build profile object
@@ -76,6 +78,8 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
+    if (from) profileFields.from = from;
+    if (to) profileFields.to = to;
     if (skills) {
       profileFields.skills = skills.split(',').map(skill => skill.trim());
     }

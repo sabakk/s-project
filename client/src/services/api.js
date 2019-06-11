@@ -14,6 +14,8 @@ export const setAuthToken = token => {
 
 export const ApiService = {
 
+  // auth
+
     login(item) {
         return axios.post('/api/auth', item)  
     },
@@ -24,12 +26,67 @@ export const ApiService = {
 
     auth() {
         return axios.get('/api/auth')
-    }
-    // editMyProfile(id, item) {
-    //     return axios.put(`users/${id}/info`, item, {headers: getAuthHeader()})  
-    // },
+    },
 
-    // getUser(id) {
-    //     return axios.get(`users/${id}`, {headers: getAuthHeader()})  
-    // }
-}
+// Profile
+
+    getCurrentProfile() { 
+       return axios.get('/api/profile/me')
+    },
+
+    getProfiles() {
+      return axios.get('/api/profile')
+    },
+
+    getProfileById(userId) {
+      return axios.get(`/api/profile/user/${userId}`)
+    },
+    getGithubRepos(username) {
+      return axios.get(`/api/profile/github/${username}`)
+    },
+    createProfile(formData) {
+      return axios.post('/api/profile', formData)
+    },
+    addExperience(formData){
+      return axios.put('/api/profile/experience', formData)
+    },
+    addEducation(formData){
+      return axios.put('/api/profile/education', formData)
+    },
+    deleteExperience(id){
+      return axios.delete(`/api/profile/experience/${id}`)
+    },
+    deleteEducation(id){
+      return axios.delete(`/api/profile/education/${id}`)
+    },
+    deleteAccount(){
+      return axios.delete('/api/profile')
+    },
+
+    // Vapes
+
+    getPosts(){
+      return axios.get('/api/posts')
+    },
+    addPost(formData){
+      return axios.post('/api/posts', formData)
+    },
+    deletePost(id){
+      return axios.delete(`/api/posts/${id}`)
+    },
+    getPost(id){
+      return axios.get(`/api/posts/${id}`)
+    },
+    addComment(postId, formData){
+      return axios.post( `/api/posts/comment/${postId}`, formData)
+    },
+    deleteComment(postId, commentId){
+      return axios.delete(`/api/posts/comment/${postId}/${commentId}`)
+    },
+    addLike(id){
+      return axios.put(`/api/posts/like/${id}`)
+    },
+    removeLike(id){
+      return axios.put(`/api/posts/unlike/${id}`)
+    },
+  }

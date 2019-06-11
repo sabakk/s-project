@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Form as FM, Field, ErrorMessage, withFormik } from 'formik';
 import * as Yup from 'yup';
-import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import {register} from '../../actions/authActions'
 
@@ -34,22 +34,22 @@ const MyForm = props => {
       <FormGroup>
         <Label for="name">Name</Label>
         <Input tag={Field} type="text"  name="name"  />
-        <FormText tag={ErrorMessage} name="name"  />
+        <ErrorMessage name="name"  component="div" className="text-danger"/>
       </FormGroup>
       <FormGroup>
         <Label for="email">Email</Label>
         <Input tag={Field} type="email"  name="email"  />
-        <FormText tag={ErrorMessage} name="email"  />
+        <ErrorMessage name="email"  component="div" className="text-danger"/>
       </FormGroup>
       <FormGroup>
         <Label for="password">Password</Label>
         <Input tag={Field}  type="password" name="password" />
-        <FormText tag={ErrorMessage} name="password"  />
+        <ErrorMessage  name="password" component="div" className="text-danger" />
       </FormGroup>
       <FormGroup>
         <Label for="confirm">Confirm Password</Label>
         <Input tag={Field}  type="password" name="confirm"  />
-        <FormText tag={ErrorMessage} name="confirm" />
+        <ErrorMessage name="confirm" component="div" className="text-danger"/>
       </FormGroup>
       <Button type="submit" disabled={isSubmitting} >Submit</Button>
      

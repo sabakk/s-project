@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Form as FM, Field, ErrorMessage, withFormik } from 'formik';
 import * as Yup from 'yup';
-import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Alert, Spinner  } from 'reactstrap';
 import { connect } from 'react-redux';
 import {login} from '../../actions/authActions'
 
@@ -13,11 +13,10 @@ const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{6,}$/
 
 const MyForm = props => {
   const {
-    handleSubmit,
-    isSubmitting
-  } = props;
+    handleSubmit
+    } = props;
 
-  if (props.isAuthenticated) {
+  if (props.auth.isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
   return (
@@ -35,14 +34,15 @@ const MyForm = props => {
       <FormGroup>
         <Label for="email">Email</Label>
         <Input tag={Field} type="email"  name="email"  />
-        <FormText tag={ErrorMessage} name="email"  />
+        <ErrorMessage name="email" component="div" className="text-danger" />
       </FormGroup>
       <FormGroup>
         <Label for="password">Password</Label>
         <Input tag={Field}  type="password" name="password" />
-        <FormText tag={ErrorMessage} name="password"  />
+        <ErrorMessage name="password" component="div" className="text-danger" />
       </FormGroup>
-      <Button type="submit" disabled={isSubmitting} >Submit</Button>
+      <Button type="submit" disabled={props.auth.loading} >Submit 
+      {props.auth.loading ? <Spinner color="primary" size="sm"/> : null }</Button>
      
     </Form >
   );
@@ -56,17 +56,14 @@ const Login = withFormik({
       password: Yup.string().matches(passwordPattern, 'Password is not elligible').required('Password is required'),
   }),
 
-  handleSubmit: (  values,  { props, setSubmitting } ) => {
-      //  setSubmitting(false)
+  handleSubmit: (  values,  { props } ) => {
       props.login(values)
-
   },
-
 })(MyForm);
 
 const mapStateToProps = state => ({
   alerts: state.alert,
-  isAuthenticated: state.auth.isAuthenticated
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, {login})(Login);

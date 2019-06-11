@@ -1,4 +1,5 @@
 import {
+    AUTH_LOADING,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     AUTH_SUCCESS,
@@ -10,9 +11,10 @@ import {
   } from '../actions/types';
 
 const initialState = {
-    isAuthenticated: localStorage.getItem('token') ? true : false,
+    // isAuthenticated: localStorage.getItem('token') ? true : false,
+    isAuthenticated: false,
     token: localStorage.getItem('token'),
-    // loading: true,
+    loading: false,
     user: null
 }
 
@@ -20,6 +22,11 @@ export default function authStoreState (state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
+        case AUTH_LOADING:
+            return {
+                ...state,
+                loading: true,
+                }
         case AUTH_SUCCESS:
             return {
                 ...state,

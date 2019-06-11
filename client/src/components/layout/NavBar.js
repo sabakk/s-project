@@ -32,7 +32,7 @@ import {
       const guestLinks = (
         <Fragment>
       <NavItem>
-        <NavLink tag={NL} to='/profiles'>Developers</NavLink>
+        <NavLink tag={NL} to='/profiles'>Profiles</NavLink>
       </NavItem>   
       <NavItem>
         <NavLink tag={NL} to="/login">Login</NavLink>
@@ -46,16 +46,17 @@ import {
       const authLinks = (
       <Fragment>
       <NavItem>
-        <NavLink tag={NL} to='/profiles'>Developers</NavLink>
+        <NavLink tag={NL} to='/profiles'>Profiles</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink tag={NL} to='/posts'>Posts</NavLink>
+        <NavLink tag={NL} to='/vapes'>Vapes</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink tag={NL}  to='/dashboard'>Dashboard</NavLink>
+        <NavLink tag={NL}  to='/dashboard'> Dashboard</NavLink>
       </NavItem>
       <NavItem>
-      <NavLink tag={NL} onClick={this.props.logout} to='/'>Logout</NavLink>
+      <NavLink tag={NL} onClick={this.props.logout} to='/'><i className='fas fa-sign-out-alt' />{' '}
+          <span >Logout</span></NavLink>
       </NavItem>
       </Fragment>
       )

@@ -9,8 +9,16 @@ import {auth} from './actions/authActions'
 
 import NavBar from './components/layout/NavBar'
 import Landing from './components/layout/Landing'
-import Login from './components/routes/Login'
-import Register from './components/routes/Register'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+import Dashboard from './components/dashboard/Dashboard'
+import PrivateRoute from './components/routing/PrivateRoute'
+import CreateProfile from './components/profile-forms/CreateProfile'
+import EditProfile from './components/profile-forms/EditProfile'
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profiles/Profile';
+import Vapes from './components/vapes/Vapes'
+
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
@@ -27,7 +35,7 @@ function App() {
     <Router>
       <div>
         <NavBar />
-        <Container>
+            <Container>
           <Row className="justify-content-center">
             <Col xs="6" >
             <Route exact path="/register" component={Register} />
@@ -38,6 +46,12 @@ function App() {
         
           <Switch>
             <Route exact path="/" component={Landing} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path='/create-profile' component={CreateProfile} />
+            <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+            <PrivateRoute exact path='/vapes' component={Vapes} />
+            <Route exact path='/profiles' component={Profiles} />
+            <Route exact path='/profile/:id' component={Profile} />
           </Switch>
           {/* <Route exact path="/not-found" component={NotFound} /> */}
         </Container>

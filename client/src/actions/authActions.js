@@ -1,4 +1,5 @@
 import {
+  AUTH_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   AUTH_SUCCESS,
@@ -55,6 +56,9 @@ export const register = (values) => async dispatch => {
   }
 
 export const login = (values) => async dispatch => {
+  dispatch({
+    type: AUTH_LOADING
+  });
     try {
       const res = await ApiService.login(values)
   
