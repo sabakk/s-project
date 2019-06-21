@@ -1,24 +1,28 @@
 import React from 'react';
-import { Jumbotron, Button } from 'reactstrap';
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Login from '../auth/Login';
+import Register from '../auth/Register';
+
 
 const Landing = ({isAuthenticated}) => {
   if (isAuthenticated) {
     return <Redirect to='/profiles' />;
   };
+  const resText = true;
   return (
-    <div>
-      <Jumbotron className="my-5">
-        <h1 className="display-3">Hello, world!</h1>
-        <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr className="my-2" />
-        <div className="d-flex justify-content-around mt-5">
-          <Button color="primary" size="lg" tag={Link} to="/login">Login</Button>
-          <Button color="info" size="lg" tag={Link} to='/register'>SignUp</Button>
+    <div className='landing'>
+        <div className='dark-overlay'>
+          <div className="landing-inner">
+            <h1 className='pb-3'>Vaping</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, vitae? Fugit, eveniet. Inventore, accusantium sit?</p>
+            <div className="d-flex justify-content-around">
+            <div className=" btn btn-outline-success " ><Login resText={resText}/></div> 
+            <div className=" btn btn-outline-primary " ><Register resText={resText}/></div> 
+            </div>
+          </div>
         </div>
-      </Jumbotron>
     </div>
   );
 };

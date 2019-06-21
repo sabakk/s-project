@@ -10,6 +10,9 @@ import {
   import {NavLink as NL} from 'react-router-dom';
   import { connect } from 'react-redux';
   import { logout } from '../../actions/authActions';
+  import Login from '../auth/Login'
+  import Register from '../auth/Register'
+
 
   class NavBar extends React.Component {
     constructor(props) {
@@ -35,10 +38,11 @@ import {
         <NavLink tag={NL} to='/profiles'>Profiles</NavLink>
       </NavItem>   
       <NavItem>
-        <NavLink tag={NL} to="/login">Login</NavLink>
+        {/* <NavLink tag={NL} to="/login">Login</NavLink> */}
+        <Login />
       </NavItem>
       <NavItem>
-        <NavLink tag={NL} to='/register' >Signup</NavLink>
+        <Register />
       </NavItem>
       </Fragment>
       )
@@ -46,10 +50,15 @@ import {
       const authLinks = (
       <Fragment>
       <NavItem>
-        <NavLink tag={NL} to='/profiles'>Profiles</NavLink>
+          <span className='navbar-text mr-3'>
+            <strong>{this.props.auth.user ? `Welcome ${this.props.auth.user.name} |` : ''}</strong>
+          </span>
       </NavItem>
       <NavItem>
         <NavLink tag={NL} to='/vapes'>Vapes</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink tag={NL} to='/profiles'>Profiles</NavLink>
       </NavItem>
       <NavItem>
         <NavLink tag={NL}  to='/dashboard'> Dashboard</NavLink>
@@ -62,15 +71,17 @@ import {
       )
 
       return (
-        <div>
-          <Navbar color="light" light expand="md">
-            <NavbarBrand tag={NL} to="/">reactstrap</NavbarBrand>
+        <div >
+          <Navbar color="dark " dark  expand="md" className="navb ">
+            <div className="container">
+            <NavbarBrand tag={NL} to="/" >Vaping</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
               {<Fragment>{this.props.auth.isAuthenticated ? authLinks : guestLinks}</Fragment>}
               </Nav>
             </Collapse>
+            </div>
           </Navbar>
         </div>
       );

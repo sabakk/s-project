@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Spinner } from 'reactstrap';
+import { Spinner, Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -20,15 +20,18 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner color="danger" />
     ) : (
-    <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
-      <p className='lead'>
+    <Container>
+      <Row>
+        <Col md="6" className=''>
+        <h1 className='py-3 text-secondary text-center'>Dashboard</h1>
+        <div className='d-flex flex-column justify-content-around align-items-center h-50'>
+      <h2 >
         <i className='fas fa-user' /> Welcome {user && user.name}
-      </p>
+      </h2>
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <div className='my-2'>
+          <div className=''>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
               <i className='fas fa-user-minus' /> Delete My Account
             </button>
@@ -42,7 +45,14 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
-    </Fragment>
+      </div>
+        </Col>
+        <Col md="6" className='d-none d-md-block'>
+          <div className='dashboard-img'></div>
+        </Col>
+      </Row>
+     
+    </Container>
   );
 };
 

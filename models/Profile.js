@@ -5,10 +5,10 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
-  company: {
+  years: {
     type: String
   },
-  website: {
+  old: {
     type: String
   },
   location: {

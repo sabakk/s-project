@@ -13,10 +13,10 @@ const VapeItem = ({
   post: { _id, brand, text, volume, nicotine, name, avatar, user, likes, comments, date },
   showActions
 }) => (
-  <div className='post bg-white p-1 my-5'>
-    <div>
+  <div className=' bg-white p-1 my-5 '>
+    <div >
       <Link to={`/profile/${user}`}>
-        <img className='round-img' src={avatar} alt='' />
+        <img className='rounded img-thumbnail ' src={avatar} alt='' />
         <h4>{name}</h4>
       </Link>
     </div>

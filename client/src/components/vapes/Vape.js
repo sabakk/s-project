@@ -17,7 +17,7 @@ const Post = ({ getPost, vape: { post, loading }, match }) => {
     <Spinner color="primary"/>
   ) : (
     <Fragment>
-      <Link to='/posts' className='btn'>
+      <Link to='/vapes' className='btn'>
         Back To Posts
       </Link>
       <VapeItem post={post} showActions={false} />

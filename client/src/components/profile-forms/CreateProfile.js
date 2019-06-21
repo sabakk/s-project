@@ -27,28 +27,32 @@ const MyForm = props => {
       <h2>Create Your Profile </h2>
       
       <FormGroup>
-        <Label for="company">Company</Label>
-        <Input tag={Field} type="text"  name="company"  />
-        <ErrorMessage name="company" component="div" className="text-danger" />
+        <Label for="old">How old are you?</Label>
+        <Input tag={Field} type="number"  name="old"  />
+        <ErrorMessage name="old" component="div" className="text-danger" />
       </FormGroup>
       <FormGroup>
-        <Label for="website">Website</Label>
-        <Input tag={Field} type="text"  name="website"  />
-        <ErrorMessage name="website" component="div" className="text-danger" />
+        <Label for="years">How long you are smoking?</Label>
+        <Input tag={Field} component="select"  name="years"  >
+            <option value="less then 1 year">less then 1 year</option>
+            <option value="2 years">2 years</option>
+            <option value="3 years">3 years</option>
+            <option value="4 years">4 years</option>
+            <option value="more then 5 years">more then 5 years</option>
+        </Input>
+        <ErrorMessage name="years" component="div" className="text-danger" />
       </FormGroup>
       <FormGroup>
-        <Label for="location">Location</Label>
-        <Input tag={Field} type="text"  name="location"  />
-        <ErrorMessage name="location" component="div" className="text-danger" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="status">Status</Label>
-        <Input tag={Field} type="text"  name="status"  />
+        <Label for="status">Do you want stop smoking?</Label>
+        <Input tag={Field} component="select"  name="status"  >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </Input>
         <ErrorMessage name="status" component="div" className="text-danger" />
       </FormGroup>
       <FormGroup>
-        <Label for="skills">Skills</Label>
-        <Input tag={Field} type="text"  name="skills"  />
+        <Label for="skills">What brand of cigarettes do you smoke</Label>
+        <Input tag={Field} type="text"  name="skills"  placeholder="Marlboro, Camel, Winston"/>
         <ErrorMessage name="skills" component="div" className="text-danger" />
       </FormGroup>
   
@@ -65,10 +69,9 @@ const MyForm = props => {
 const CreateProfile = withFormik({
 
   mapPropsToValues: props => ({  
-  company: '',
-  website: '',
-  location: '',
-  status: '',
+  old: '',
+  years: 'less then 1 year',
+  status: 'yes',
   skills: ''
 }),
   validationSchema: Yup.object().shape({

@@ -8,29 +8,26 @@ const ProfileItem = ({
   profile: {
     status,
     skills,
-    from,
-    to,
+    years,
+    date,
     user: { _id, name, avatar }
   }
 }) => {
   return (
     <div >
-    <Card className="m-5 w-50">
-    <CardImg src={avatar} alt='' className='round-img' />
+  <Card className="m-4" >
+    <CardImg src={avatar} alt='' className='rounded img-thumbnail' />
      <div>
         <CardTitle>{name}</CardTitle>
-        <CardText>
-          {status} 
-        </CardText>
-       <Moment format='YYYY/MM/DD'>{from}</Moment> - {' '} {!to ? "Now" : <Moment format='YYYY/MM/DD'>{to}</Moment>}
-       
-       <Link to={`/profile/${_id}`} className='btn btn-primary'>
+        <CardText>{status}</CardText>
+        <Moment format='YYYY/MM/DD'>{date}</Moment><br></br>
+       <Link to={`/profile/${_id}`} className='btn btn-dark'>
           View Profile
         </Link>
-      </div>
+    </div>
       <ListGroup>
         {skills.slice(0, 4).map((skill, index) => (
-          <ListGroupItem key={index} className='text-primary'>
+          <ListGroupItem key={index} className=''>
             <i className='fas fa-check' /> {skill}
           </ListGroupItem>
         ))}

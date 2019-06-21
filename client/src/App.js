@@ -1,67 +1,53 @@
-import React, {useEffect} from 'react'
-import './App.css'
-import { Container, Row, Col } from 'reactstrap'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from './store'
+import React, {Component} from 'react'
+import './App.scss'
+import { UncontrolledAlert} from 'reactstrap'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 import {setAuthToken} from './services/api'
 import {auth} from './actions/authActions'
 
 import NavBar from './components/layout/NavBar'
+import Footer from './components/layout/Footer'
 import Landing from './components/layout/Landing'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
-import Dashboard from './components/dashboard/Dashboard'
-import PrivateRoute from './components/routing/PrivateRoute'
-import CreateProfile from './components/profile-forms/CreateProfile'
-import EditProfile from './components/profile-forms/EditProfile'
-import Profiles from './components/profiles/Profiles';
-import Profile from './components/profiles/Profile';
-import Vapes from './components/vapes/Vapes'
-import Vape from './components/vapes/Vape'
+import Routes from './components/routing/Routes'
+
 
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
 }
 
-function App() {
-  
-  useEffect(() => {
-    store.dispatch(auth());
-  }, []);
-  
+class PApp extends Component {
+
+  componentDidMount() {
+    this.props.auth()
+  }
+
+  render() {
   return (
-    <Provider store={store}>
-    <Router>
-      <div>
+    <BrowserRouter>
+      <div className='grail'>
         <NavBar />
-            <Container>
-          <Row className="justify-content-center">
-            <Col xs="6" >
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            </Col>
-          </Row>
-         
-        
+        {
+           this.props.alerts !== null && this.props.alerts.length > 0 && this.props.alerts.map(alert => ( 
+      <UncontrolledAlert  key={alert.id}  color={alert.alertType} className='m-0'>
+      {alert.msg}
+    </ UncontrolledAlert >))
+         }
           <Switch>
             <Route exact path="/" component={Landing} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <PrivateRoute exact path='/create-profile' component={CreateProfile} />
-            <PrivateRoute exact path='/edit-profile' component={EditProfile} />
-            <PrivateRoute exact path='/vapes' component={Vapes} />
-            <PrivateRoute exact path='/vape/:id' component={Vape} />
-            <Route exact path='/profiles' component={Profiles} />
-            <Route exact path='/profile/:id' component={Profile} />
+            <Route exact component={Routes} />
           </Switch>
-          {/* <Route exact path="/not-found" component={NotFound} /> */}
-        </Container>
-        {/* <Footer /> */}
+        <Footer />
         </div>
-    </Router>
-  </Provider>
+    </BrowserRouter>
   )
 }
+}
 
-export default App
+const mapStateToProps = state => ({
+  alerts: state.alert,
+});
+
+ const App = connect(mapStateToProps, {auth})(PApp)
+ export default App

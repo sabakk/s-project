@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Spinner,  CardGroup } from 'reactstrap';
+import { Spinner,  Row, Col, Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ProfileItem from './ProfileItem';
@@ -15,20 +15,19 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
       {loading ? (
         <Spinner color="primary" />      ) : (
         <Fragment>
-          <h1 className='large text-primary'>Profiles</h1>
-          <p className='lead'>
-            <i className='fab fa-connectdevelop' /> Browse and connect with
-            developers
-          </p>
-          <CardGroup>
+          <h1 className='large  py-4'>Vapers profiles</h1>
+          
+          <Container><Row>
             {profiles.length > 0 ? (
               profiles.map(profile => (
+                <Col sm="6" md="3">
                 <ProfileItem key={profile._id} profile={profile} />
+                </Col>
               ))
             ) : (
               <h4>No profiles found...</h4>
             )}
-          </CardGroup>
+          </Row></Container>
         </Fragment>
       )}
     </Fragment>
