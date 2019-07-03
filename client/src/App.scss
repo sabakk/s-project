@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(240, 234, 234, 0.911) !important; 
+  background-color: rgba(240, 234, 234, 0.911) !important;
 }
 
 .grail {
@@ -16,7 +16,7 @@ body {
 
 .landing {
   position: relative;
-  background: url('./img/vape.jpg') no-repeat center center/cover;
+  background: url("./img/vape.jpg") no-repeat center center/cover;
   height: 87vh;
 }
 
@@ -41,7 +41,7 @@ body {
   text-align: center;
 }
 
-.dashboard-img{
-  background: url('./img/vaping.jpg') no-repeat center center/cover;
+.dashboard-img {
+  background: url("./img/vaping.jpg") no-repeat center center/cover;
   height: 87vh;
 }
