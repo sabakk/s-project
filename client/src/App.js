@@ -10,6 +10,7 @@ import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Routes from "./components/routing/Routes";
+import CartDropdown from "./components/cart/CartDropdown";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -25,6 +26,8 @@ class PApp extends Component {
       <BrowserRouter>
         <div className="grail">
           <NavBar />
+
+          {this.props.hidden ? null : <CartDropdown />}
           {this.props.alerts !== null &&
             this.props.alerts.length > 0 &&
             this.props.alerts.map(alert => (
@@ -48,7 +51,8 @@ class PApp extends Component {
 }
 
 const mapStateToProps = state => ({
-  alerts: state.alert
+  alerts: state.alert,
+  hidden: state.cart.hidden
 });
 
 const App = connect(
