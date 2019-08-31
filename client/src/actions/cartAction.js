@@ -1,4 +1,4 @@
-import { TOGGLE_CART, ADD_CART, REMOVE_CART, CLEAR_CART } from "./types";
+import { TOGGLE_CART, ADD_CART, DELETE_CART, CLEAR_CART } from "./types";
 
 export const toggleCartHidden = () => ({
   type: TOGGLE_CART
@@ -9,8 +9,8 @@ export const addItem = item => ({
   payload: item
 });
 
-export const removeItem = item => ({
-  type: REMOVE_CART,
+export const deleteItem = item => ({
+  type: DELETE_CART,
   payload: item
 });
 

@@ -1,8 +1,9 @@
 import {
   TOGGLE_CART,
   ADD_CART,
-  REMOVE_CART,
-  CLEAR_CART
+  DELETE_CART,
+  CLEAR_CART,
+  REMOVE_CART
 } from "../actions/types";
 const initialState = {
   hidden: true,
@@ -51,7 +52,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
       };
-    case REMOVE_CART:
+    case DELETE_CART:
       return {
         ...state,
         cartItems: removeItemFromCart(state.cartItems, action.payload)
@@ -62,6 +63,11 @@ const cartReducer = (state = initialState, action) => {
         cartItems: state.cartItems.filter(
           cartItem => cartItem._id !== action.payload._id
         )
+      };
+    case REMOVE_CART:
+      return {
+        ...state,
+        cartItems: []
       };
     default:
       return state;
