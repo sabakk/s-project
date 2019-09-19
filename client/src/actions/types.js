@@ -25,6 +25,9 @@ export const ADD_POST = "ADD_POST";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
+export const SET_TEXT_FILTER = "SET_TEXT_FILTER";
+export const SET_SORT_VAPES = "SET_SORT_VAPES";
+
 export const TOGGLE_CART = "TOGGLE_CART";
 export const ADD_CART = "ADD_CART";
 export const DELETE_CART = "DELETE_CART";

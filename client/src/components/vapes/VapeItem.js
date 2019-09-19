@@ -21,6 +21,7 @@ const VapeItem = ({
     text,
     volume,
     nicotine,
+    price,
     name,
     avatar,
     user,
@@ -37,10 +38,11 @@ const VapeItem = ({
         </Link>
       </div>
       <div className="my-3">
-        <h1>{brand}</h1>
-        <p>{text}</p>
-        <p>{nicotine}</p>
-        <p>{volume}</p>
+        <h1>{brand && brand}</h1>
+        <p>{text && text}</p>
+        <p>{nicotine && nicotine}</p>
+        <p>{volume && volume}</p>
+        <p>{price && price + "$"}</p>
         <p className="post-date">
           Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
         </p>

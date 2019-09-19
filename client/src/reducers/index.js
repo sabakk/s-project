@@ -5,6 +5,7 @@ import authReducer from "./authReducer";
 import alert from "./alert";
 import profile from "./profile";
 import vape from "./vape";
+import filter from "./filter";
 import cartReducer from "./cart";
 
 const persistConfig = {
@@ -18,6 +19,7 @@ const rootReduser = combineReducers({
   alert,
   profile,
   vape,
+  filter,
   cart: cartReducer
 });
 

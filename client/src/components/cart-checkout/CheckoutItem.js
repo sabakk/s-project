@@ -8,7 +8,7 @@ import {
 } from "../../actions/cartAction";
 
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, deleteItem }) => {
-  const { name, avatar, volume, quantity } = cartItem;
+  const { name, avatar, price, quantity } = cartItem;
   return (
     <div className="checkout-item">
       <div className="image-container">
@@ -24,7 +24,7 @@ const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, deleteItem }) => {
           &#10095;
         </div>
       </span>
-      <span className="price">{volume}</span>
+      <span className="price">{price && price + "$"}</span>
       <div
         className="remove-button"
         onClick={() => clearItemFromCart(cartItem)}
