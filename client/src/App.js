@@ -26,7 +26,6 @@ class PApp extends Component {
       <BrowserRouter>
         <div className="grail">
           <NavBar />
-
           {this.props.hidden ? null : <CartDropdown />}
           {this.props.alerts !== null &&
             this.props.alerts.length > 0 &&
