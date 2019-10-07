@@ -1,6 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://saba:789987@n-social-xeeib.mongodb.net/test?retryWrites=true",
-  "jwtSecret": "secret",
-  "githubClientId": "",
-  "githubSecret": ""
-}
